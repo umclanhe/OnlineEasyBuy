@@ -69,8 +69,7 @@ public class MyCart {
         }       
         return totalprice;
     }
-    
-    
+       
     public int getTotalNum(){
         int totalnum=0;        
         ArrayList<Product> al=new ArrayList<Product>();
