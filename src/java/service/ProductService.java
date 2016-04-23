@@ -21,8 +21,10 @@ public class ProductService {
             while(rs.next()){
                 item.setPid(Integer.parseInt(rs.getString(1)));
                 item.setPname(rs.getString(2));
+                item.setCategory(rs.getString(3));
                 item.setPrice(Double.parseDouble(rs.getString(4)));
                 item.setInventory(Integer.parseInt(rs.getString(5)));
+                item.setFeature(rs.getString(6));
                 item.setPicture(rs.getString(7));
             }
             

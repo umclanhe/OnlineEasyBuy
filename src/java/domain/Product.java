@@ -2,7 +2,7 @@ package domain;
 
 /**
  *
- * @author zjy
+ * @author zjy 
  */
 public class Product {
     private int pid;
@@ -11,8 +11,9 @@ public class Product {
     private int inventory;
     private int quantity=1;
     private String picture;
-
-    
+    private String feature;
+    private String pcategory;
+  
     public int getPid() {
         return pid;
     }
@@ -59,5 +60,21 @@ public class Product {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+    
+    public String getFeature() {
+        return feature;
+    }
+    
+    public void setFeature(String feature) {
+        this.feature = feature;
+    } 
+    
+    public String getCategory() {
+        return pcategory;
+    }
+    
+    public void setCategory(String pcategory) {
+        this.pcategory = pcategory;
     }
 }
