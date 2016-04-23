@@ -58,8 +58,8 @@ public class MyCart {
     }
     
     //total price
-    public int getTotalPrice(){
-        int totalprice=0;        
+    public double getTotalPrice(){
+        double totalprice=0;        
         ArrayList<Product> al=new ArrayList<Product>();
         Iterator iterator = hm.keySet().iterator();
         while(iterator.hasNext()){

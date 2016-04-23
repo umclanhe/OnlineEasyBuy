@@ -10,6 +10,7 @@
     </head>
     <body>
         <h1>Products</h1>
+        <div><a href="/OnlineEasyBuy/login.jsp">login</a> </div>
         <div id="scart"><a href="/OnlineEasyBuy/CartServlet?type=show">Shopping Cart (<span id="num">${TotalNum}</span>)</a></div>
 
         <table id="plist" border="1">
