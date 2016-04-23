@@ -7,9 +7,11 @@ package domain;
 public class Product {
     private int pid;
     private String pname;
-    private double price;
+    private String category;
+    private double price;   
     private int inventory;
     private int quantity=1;
+    private String description;
     private String picture;
 
     
@@ -60,4 +62,23 @@ public class Product {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    
+    
 }
