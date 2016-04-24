@@ -53,14 +53,21 @@ public class AddProduct extends HttpServlet {
         }else{
             myCart=(MyCart)request.getSession().getAttribute("myCart");
         }
-                                                
-        myCart.addProduct(pid);        
-        System.out.println(pid);
-        
-        int num = myCart.getTotalNum();
-        System.out.println(num);
-        
-        String text = num+"";
+        ProductService newpservice = new ProductService();
+        int inventory = newpservice.getProduct(pid).getInventory();  
+        System.out.println("number of the products: "+inventory);
+        String text;
+        if(inventory == 0) {
+            System.out.println("The product is out of stock!!");
+             text = inventory+"";
+        }
+        else {
+            myCart.addProduct(pid);
+            int num = myCart.getTotalNum();
+            System.out.println(num);
+            System.out.println(pid);
+            text = num+"";
+        }
         response.getWriter().write(text); 
         
          

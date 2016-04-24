@@ -44,9 +44,9 @@ public class CartServlet extends HttpServlet {
         MyCart myCart;
         if(request.getSession().getAttribute("myCart")==null){            
             myCart = new MyCart();
-            request.getSession().setAttribute("myCart", myCart);
+            request.getSession(false).setAttribute("myCart", myCart);
         }else{
-            myCart=(MyCart)request.getSession().getAttribute("myCart");
+            myCart=(MyCart)request.getSession(false).getAttribute("myCart");
         }
                 
         if(type.equals("add")){                           
