@@ -60,7 +60,7 @@ public class OrderServlet extends HttpServlet {
         request.setAttribute("orderInfo",al);
         request.setAttribute("totalPrice", totalPrice);
         //go to the order page
-        request.getRequestDispatcher("orderInfo.jsp").forward(request, response);
+        request.getRequestDispatcher("shippingInfo.jsp").forward(request, response);
                 
     }
 
