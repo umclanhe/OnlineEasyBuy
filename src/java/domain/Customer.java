@@ -6,6 +6,7 @@ public class Customer {
     private String email;
     private String psw;
     
+    
     public Customer(String email, String psw){
         super();
         this.email=email;

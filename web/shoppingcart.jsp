@@ -35,7 +35,7 @@
             %>
             
             <tr>
-                <td id="dall"colspan="5"><a href="/OnlineEasyBuy/CartServlet?type=deleteall">Remove All</a></td>
+                <td id="dall" colspan="5"><a href="/OnlineEasyBuy/CartServlet?type=deleteall">Remove All</a></td>
             </tr>
             <tr>
                 <td id="totalprice" colspan="5">Total price: ${TotalPrice} </td>

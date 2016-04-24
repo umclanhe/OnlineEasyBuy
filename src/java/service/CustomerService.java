@@ -48,8 +48,29 @@ public class CustomerService {
         
         return newAl;
         }
+    
+    public Address findAddress(String aid){
+        String sql = "select * from address where aid=?";
+        String paras[] = {aid+""};        
+        ArrayList al = new SqlHelper().executeQuery(sql,paras);
+        Address address = new Address();
+        
+        for(int i=0; i<al.size();i++){
+            Object obj[] = (Object[])al.get(i);
+            address.setAid(Integer.parseInt(obj[0].toString()));
+            address.setCid(Integer.parseInt(obj[1].toString()));
+            address.setAname(obj[2].toString());
+            address.setStreet(obj[3].toString());
+            address.setCity(obj[4].toString());
+            address.setState(obj[5].toString());
+            address.setZip(Integer.parseInt(obj[6].toString())); 
+            address.setPhone(obj[7].toString()); 
+        }     
+        
+        return address;
+        }
+
+    
 }
     
     
-    
-
