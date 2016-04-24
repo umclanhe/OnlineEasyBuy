@@ -5,7 +5,7 @@ function processAction(pid)
     xhr.onreadystatechange = processResponse;    
     // prepare the data for the server – simplistic GET  
     //var url = "AddProduct.java?pid="+pid;     
-    xhr.open("GET", "AddProduct?pid="+pid+"&"+ new Date().getTime(), true);
+    xhr.open("GET", "AddProduct?pid="+pid+"&"+ new Date().getTime(), true);   // AddProduct class did nothing??
     //send the request
     xhr.send();
     

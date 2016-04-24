@@ -2,19 +2,18 @@ package domain;
 
 /**
  *
- * @author zjy
+ * @author zjy 
  */
 public class Product {
     private int pid;
     private String pname;
-    private String category;
-    private double price;   
+    private double price;
     private int inventory;
     private int quantity=1;
-    private String description;
     private String picture;
-
-    
+    private String feature;
+    private String pcategory;
+  
     public int getPid() {
         return pid;
     }
@@ -62,23 +61,20 @@ public class Product {
     public void setPicture(String picture) {
         this.picture = picture;
     }
-
+    
+    public String getFeature() {
+        return feature;
+    }
+    
+    public void setFeature(String feature) {
+        this.feature = feature;
+    } 
+    
     public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+        return pcategory;
     }
     
-    
-    
+    public void setCategory(String pcategory) {
+        this.pcategory = pcategory;
+    }
 }

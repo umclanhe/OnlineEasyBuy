@@ -37,7 +37,9 @@ body{
   border-bottom: 3px solid#B6A7A7;
 }
 .logo{
-	float:left;
+    float:left;
+    padding: 0 15% 0 0;
+        
 }
 .logo a {
  display: block;
@@ -61,11 +63,12 @@ span.menu {
 }
 /*search*/
 .search{
-	position: relative;
-	background: #f3f4f5;
-	border: 1px solid #D8D8D8;
-	 float: right;
+    position: relative;
+    background: #f3f4f5;
+    border: 1px solid #D8D8D8;
+    float: left;
     margin-top: 0.7em;
+    margin-left: 130px;
 }
 .search form{
 	width:100%;
@@ -95,7 +98,79 @@ span.menu {
 	top: 8px;
 	right: 5px;
 }
+/*shoppingcart*/
 
+.cart-wrap {
+    width: 5.045%;
+    float: right;
+//    padding: 15px 0;
+    height: 64px;
+    position: relative;
+    text-align: center;
+}
+.cart-wrap a {
+    display: inline-block;
+}
+.header-icon-cart {
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    top: 6px;
+}
+.cart-wrap.count {
+    position: absolute;
+    right: 1px;
+    top: 11px;
+    z-index: 12;
+    width: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+.cart-wrap.header-icon-solid-circle {
+    font-size: 26px;
+    color: #fff200;
+    position: absolute;
+    z-index: 11;
+    right: 0;
+    top: 7px;
+}
+.categoryBox {
+//    height: 176px;
+    min-height: 1px;
+    width: 49%;
+//    margin: 21px 14px 6px;
+    float: left;
+    position: relative;
+}
+.categoryBox a {
+    text-decoration: none;
+}
+.categoryLabel {
+    position: absolute;
+    background-color: #fff;
+    height: 40px;
+    width: auto;
+    margin: 2px;
+}
+.categoryLabelText {
+    position: absolute;
+    line-height: 1.1;
+    font-size: 2.0em;
+    margin: 3px 10px;
+    padding: 0.5em 0.5em;
+    margin: 0 0;
+    font-weight: 500;
+    color: #ff0;
+}
+.categoryImage {
+    padding: 1px;
+    max-width: 100%;
+    height: 400px;   // 400 px   
+    background: #03A9F4;
+}
 .top-menu ul li {
   display: inline-block;
    margin: 0 1em;
@@ -104,14 +179,15 @@ span.menu {
   font-size: 1.3em;
   text-decoration: none;
   text-transform:capitalize;
-	color:#7c7c7c;
-	font-family: 'Exo 2', sans-serif;
+  color:#7c7c7c;
+  font-family: 'Exo 2', sans-serif;
 }
 .top-menu ul li a:hover {
-  color: #6bd04e;
+  color: #19CAE0; // #6bd04e
 }
 .top-menu ul li a.active {
-  color: #6bd04e;
+//  color: #6bd04e;
+  color: #19CAE0;
 }
 .top-menu {
   float: left;
@@ -128,7 +204,7 @@ a.button {
  font-size: 1em;
   color: #fff;
   padding: 0.5em 1em;
-  background: #6bd04e;
+  background: #19CAE0; // #6bd04e
   text-transform: capitalize;
   text-decoration: none;
 }
@@ -136,16 +212,17 @@ a.button1 {
   font-size: 1em;
   color: #fff;
   padding: 0.5em 1em;
-  background:#6bd04e;
+  background:#19CAE0;   //#6bd04e
   text-transform: capitalize;
   text-decoration: none;
 }
 a.button:hover {
-    background: #e3bb4d;
+  background: #D0674E;  //#e3bb4d
 }
 a.button1:hover {
-  background: #e3bb4d;
+  background: #D0674E;  //#e3bb4d
 }
+
 .banner-section {
   /**background: url(../images/footer-bg.jpg);**/
   padding: 4em 0;
@@ -154,17 +231,17 @@ a.button1:hover {
 }
 .banner-gridimg img {
   width: 100%;
-    border-radius: 5px;
-	-ms-border-radius: 5px;
+  border-radius: 5px;
+  -ms-border-radius: 5px;
   -o-border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
 }
 .banner-grid h1 {
-  font-size: 2.32em;
-  color:#6bd04e;
+    font-size: 2.32em;
+    color:#6bd04e;
     font-weight: 200;
-	  font-family: 'Exo 2', sans-serif;
+    font-family: 'Exo 2', sans-serif;
 }
 .banner-grid h5 {
   font-size: 1.45em;
@@ -1482,6 +1559,9 @@ a.button6 {
 .search input[type="text"] {
   font-size: 1.1em;
  }
+ .categoryLabelText {
+     font-size: 1.7em;    
+ }
 a.button {
   font-size: 1em;
   }
@@ -1736,6 +1816,9 @@ a.button1{
 }
 .search input[type="text"] {
   font-size: 1em;
+}
+.categoryLabelText {
+    font-size: 1.4em;
 }
 .banner-gridimg {
   width: 50%;
@@ -2275,6 +2358,9 @@ a.button6 {
  }
 .banner-grid h1 {
   font-size: 1.15em;
+}
+.categoryLabelText {
+    font-size: 1.15em;
 }
 .join-grid {
   width: 100%;
