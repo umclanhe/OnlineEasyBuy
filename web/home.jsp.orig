@@ -50,6 +50,7 @@
                 </ul>
             </div>
             <!-- nav-bar buttons-->
+<<<<<<< HEAD
             <%                
                 if((String)session.getAttribute("loginUsername") ==null){
             %>    
@@ -68,6 +69,14 @@
                     <%=(String)session.getAttribute("loginUsername") %>
                 </div>
             <%}%>
+=======
+            <div class="buttons">
+                <a href="login.jsp" class="button1">Sign in</a>
+            </div>
+            <div class="buttons">
+                <a href="signup.jsp" class="button1">Create Account</a>
+            </div>
+>>>>>>> origin/master
             <div class="clearfix"></div>
         </div>
         <div class="header-bottom">

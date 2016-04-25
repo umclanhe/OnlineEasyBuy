@@ -85,6 +85,12 @@ public class CustomerService {
         return address;
         }
 
+    public String findName(Customer customer){
+        String sql = "select cname from customer where cid=?";
+        String paras[] = {customer.getCid()+""}; 
+        String username = new SqlHelper().getIdQuery(sql,paras);
+        return username;
+    }
     
 }
     
