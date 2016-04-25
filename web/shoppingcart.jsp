@@ -42,8 +42,9 @@
             </tr>
         </table>
         </form>
-            <div id="cshop"><a href="/OnlineEasyBuy/CartServlet?type=continue">Continue Shopping</a></div>
-            <div id="cshop"><a href="/OnlineEasyBuy/OrderServlet">Place Order</a></div>
-            <!--<a href="/OnlineEasyBuy/index.jsp">Back to the HomePage</a>-->
+            
+        <div id="cshop"><a href="/OnlineEasyBuy/CartServlet?type=continue">Continue Shopping</a></div>
+        <div id="cshop"><a href="/OnlineEasyBuy/OrderServlet">Place Order</a></div>
+
     </body>
 </html>

@@ -5,23 +5,22 @@
  */
 package controller;
 
-import domain.Address;
+import domain.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.MyCart;
+import service.CustomerService;
 
 /**
  *
  * @author zjy
  */
-@WebServlet(name = "ReviewServlet", urlPatterns = {"/ReviewServlet"})
-public class ReviewServlet extends HttpServlet {
+@WebServlet(name = "SignupServlet", urlPatterns = {"/SignupServlet"})
+public class SignupServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,42 +35,22 @@ public class ReviewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String yes = "Yes";
-            String no = "No";
-            //prepare shipping address;
-            Address saddress = (Address)request.getSession().getAttribute("shippingAddress");
-            Address baddress = new Address();
-            //billing address         
-            String selectBillAddress =  request.getParameter("selectBillAdd");
-            if (selectBillAddress.equals("new")){                
-                String aname = request.getParameter("aname");
-                String street = request.getParameter("street");
-                String city = request.getParameter("city");
-                String state = request.getParameter("state");
-                String zip = request.getParameter("zip");
-                String phone = request.getParameter("phone");
-                baddress.setAname(aname);
-                baddress.setStreet(street);
-                baddress.setCity(city);
-                baddress.setState(state);
-                baddress.setZip(Integer.parseInt(zip));
-                baddress.setPhone(phone);
-                request.getSession().setAttribute("newBillAdd", yes);
-                //request.getSession().setAttribute("billingAddress", baddress);
-             }else{ //billing address is same as shipping address
-                request.getSession().setAttribute("newBillAdd", no); 
-                baddress = saddress;                
+            /* TODO output your page here. You may use following sample code. */
+            Customer newcustomer;
+            String cemail = (String)request.getParameter("cemail");
+            String cpsw = (String)request.getParameter("cpsw");
+            String name = (String)request.getParameter("username");
+            newcustomer = new Customer(cemail, cpsw, name);
+                        
+            CustomerService customerService = new CustomerService();
+            boolean sqlvalid = false;
+            sqlvalid = customerService.addCustomer(newcustomer);
+            if(sqlvalid){
+            request.getRequestDispatcher("signupSuccessful.jsp").forward(request,response);
+            }else{
+                request.getRequestDispatcher("signupFailed.jsp").forward(request,response);
             }
             
-            request.getSession().setAttribute("billingAddress", baddress);
-            //user view order request
-            MyCart myCart = (MyCart)request.getSession().getAttribute("myCart");
-            ArrayList al=myCart.showMyCart();
-            double totalPrice = myCart.getTotalPrice();
-            request.setAttribute("orderInfo",al);
-            request.setAttribute("totalPrice", totalPrice);
-            
-            request.getRequestDispatcher("orderReview.jsp").forward(request, response);
         }
     }
 

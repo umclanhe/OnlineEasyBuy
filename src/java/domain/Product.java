@@ -13,7 +13,7 @@ public class Product {
     private String picture;
     private String feature;
     private String pcategory;
-  
+    
     public int getPid() {
         return pid;
     }

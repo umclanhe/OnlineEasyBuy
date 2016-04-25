@@ -41,7 +41,7 @@ public class ContinueOrderServlet extends HttpServlet {
            String yes = "Yes";
            String no = "No";
            String selectAddress =  request.getParameter("selectAdd");
-           if (selectAddress == "new"){
+           if (selectAddress.equals("new")){
                Address saddress = new Address();
                String aname = request.getParameter("aname");
                String street = request.getParameter("street");
@@ -60,7 +60,7 @@ public class ContinueOrderServlet extends HttpServlet {
            }else{
                request.getSession().setAttribute("shippingAddressnew",no);           
                CustomerService customerService = new CustomerService();
-               Address saddress = customerService.findAddress(selectAddress);                             
+               Address saddress = customerService.findAddress(selectAddress+"");                             
                request.getSession().setAttribute("shippingAddress", saddress);
            
            }

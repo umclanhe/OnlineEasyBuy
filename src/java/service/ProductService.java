@@ -49,7 +49,7 @@ public class ProductService {
             product.setCategory(obj[2].toString());
             product.setPrice(Double.parseDouble(obj[3].toString()));
             product.setInventory(Integer.parseInt(obj[4].toString()));
-            product.setDescription(obj[5].toString());
+            product.setFeature(obj[5].toString());
             product.setPicture(obj[6].toString());          
             newAl.add(product);
         }     

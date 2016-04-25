@@ -7,6 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css" />
         <title>Order Review</title>
     </head>
     <body>
@@ -50,15 +51,27 @@
                 <td class="ctd3"><%=saddress.getCity() %></td>
                 <td class="ctd4"><%=saddress.getState() %> <%=saddress.getZip() %></td>
                 <td class="ctd3"><%=saddress.getPhone() %></td>
-            </tr>                   
-        <%   
-        }            
-        %>        
+            </tr>                                                               
         </table>
         
+        <!-- billing information-->
+        <table style="border-collapse: collapse" border="1">
+        <tr><td>Billing Address</td></tr>
+        <%
+        //get shipping address form request
+            Address baddress = (Address)request.getSession().getAttribute("billingAddress");            
+        %>
+            <tr>
+                <td class="ctd1"><%=baddress.getAname() %></td>
+                <td class="ctd2"><%=baddress.getStreet() %></td>
+                <td class="ctd3"><%=baddress.getCity() %></td>
+                <td class="ctd4"><%=baddress.getState() %> <%=baddress.getZip() %></td>
+                <td class="ctd3"><%=baddress.getPhone() %></td>
+            </tr>                                                               
+        </table>
        
+        <div id="cshop"><a href="/OnlineEasyBuy/SubmitServlet">Place Order</a></div>
         
-        <a href="/OnlineEasyBuy/SubmitServlet">Place Order</a>
         
     </body>
 </html>
