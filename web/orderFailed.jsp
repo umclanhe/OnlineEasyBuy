@@ -1,6 +1,6 @@
 <%-- 
-    Document   : orderSubmit
-    Created on : 2016-4-19, 14:02:35
+    Document   : orderFailed
+    Created on : 2016-4-24, 16:02:59
     Author     : zjy
 --%>
 
@@ -10,9 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>Order Submit</title>
+        <title>Place Order Failed</title>
     </head>
     <body>
-        <h1>Thank you for your purchase!</h1>
+        <h1>Sorry, place order failed!</h1>
     </body>
 </html>

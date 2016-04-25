@@ -13,6 +13,13 @@ public class Customer {
         this.psw=psw;
     }
     
+    public Customer(String email, String psw, String name){
+        super();
+        this.email = email;
+        this.psw = psw;
+        this.name = name;
+    }
+    
     public int getCid() {
         return cid;
     }

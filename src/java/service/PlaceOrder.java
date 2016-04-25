@@ -14,9 +14,9 @@ public class PlaceOrder {
     public void addAddress(Address address, Customer customer){
         String sql = "insert into address (cid, aname, street, city, state, zip, phone) values(?, ?, ?, ?, ?, ?, ?) ";
         String paras[] = {customer.getCid()+"", address.getAname(), address.getStreet(),
-            address.getCity(), address.getState(), address.getState(), address.getZip()+"",address.getPhone() }; 
+            address.getCity(), address.getState(), address.getZip()+"",address.getPhone() }; 
         SqlHelper dosql= new SqlHelper();
-        dosql.insertQuery(sql, paras);          
+        boolean addaddressvalid = dosql.insertQuery(sql, paras);          
     }
     
     public String getAid(Customer customer){
@@ -26,7 +26,11 @@ public class PlaceOrder {
         return aid;
     }
     
-    public void addOrder(Customer customer,MyCart myCart, String sid, String bid){
+    public boolean addOrder(Customer customer,MyCart myCart, String sid, String bid){
+        
+        boolean ordervalid = false;
+        boolean transactionvalid = false;
+        boolean productvalid = false;
         //time
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Timestamp nowdate = new Timestamp(System.currentTimeMillis());
@@ -36,11 +40,12 @@ public class PlaceOrder {
         int r2=(int)(Math.random()*(10));
         long now = System.currentTimeMillis();
         String oid =String.valueOf(r1)+String.valueOf(r2)+String.valueOf(now);
+        
         //order table
         String sql = "insert into corder(oid, cid, otime, sadr, badr) values(?,?,?,?,?)";
         String paras[] = {oid, customer.getCid()+"", otime, sid, bid};
         SqlHelper dosql= new SqlHelper();
-        dosql.insertQuery(sql, paras);
+        ordervalid = dosql.insertQuery(sql, paras);
         
         //
         ArrayList al=myCart.showMyCart();
@@ -51,7 +56,7 @@ public class PlaceOrder {
             String sql2 = "insert into ctransaction(pid, quantity, oid) values(?,?,?)";
             String paras2[] = {item.getPid()+"", item.getQuantity()+"", oid};
             SqlHelper dosql2= new SqlHelper();
-            dosql2.insertQuery(sql2, paras2);
+            transactionvalid = dosql2.insertQuery(sql2, paras2);
             
             //product table  --update inventory
             String sql3 = "select inventory from product where pid=?";
@@ -62,9 +67,14 @@ public class PlaceOrder {
             String sql4 = "update product set inventory = ? where pid=?";
             String paras4[] ={quantity+"", item.getPid()+"" };
             SqlHelper dosql5= new SqlHelper();
-            dosql5.insertQuery(sql4, paras4);//update
+            productvalid = dosql5.insertQuery(sql4, paras4);//update
+            
         }
-        
+        if(ordervalid&transactionvalid&productvalid){
+            return true;
+        }else{
+            return false;
+        }
     }
     
 }

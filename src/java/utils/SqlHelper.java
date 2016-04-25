@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -43,10 +44,11 @@ public class SqlHelper {
         return al;
     }
     
-    public void insertQuery(String sql, String[] paras){
+    public boolean insertQuery(String sql, String[] paras){
         Connection ct = null;    
         ResultSet rs = null;
         PreparedStatement ps = null;
+
         try{
             ct=DBUtil.getConnection();
             ps=ct.prepareStatement(sql);
@@ -55,11 +57,14 @@ public class SqlHelper {
                 ps.setString(i+1,paras[i]);
             }
             ps.executeUpdate();             
-                      
-        } catch(Exception e){
-            e.printStackTrace();
-            System.out.println("sql exception");
-        }           
+            return true;          
+        } catch (SQLException se)
+        {
+            se.printStackTrace(); 
+            System.out.println("sqlerror........");
+            return false;
+        }    
+        
     }
     
     public String getIdQuery(String sql, String[] paras){
