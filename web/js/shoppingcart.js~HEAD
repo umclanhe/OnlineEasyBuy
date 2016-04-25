@@ -3,7 +3,7 @@ function processAction(pid)
    
     var xhr = createXHR();
     xhr.onreadystatechange = processResponse;    
-    // prepare the data for the server â€simplistic GET  
+    // prepare the data for the server â€“ simplistic GET  
     //var url = "AddProduct.java?pid="+pid;     
     xhr.open("GET", "AddProduct?pid="+pid+"&"+ new Date().getTime(), true); 
     //send the request

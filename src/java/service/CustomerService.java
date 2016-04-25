@@ -2,6 +2,7 @@ package service;
 
 import domain.Address;
 import domain.Customer;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import utils.SqlHelper;
 
@@ -23,6 +24,20 @@ public class CustomerService {
             customer.setName((String)objects[3]);            
             return true;
         }       
+    }
+    
+    public boolean addCustomer(Customer customer){
+        String sql = "insert into customer( cemail, cpsw, cname) values(?, ?, ?)";
+        String paras[] ={customer.getEmail(), customer.getPsw(), customer.getName()};
+        SqlHelper dosql= new SqlHelper();
+        boolean sqlvalid = false;
+        try{
+            sqlvalid = dosql.insertQuery(sql, paras);           
+        }catch(Exception se)
+        {
+            se.printStackTrace();  
+        }        
+        return sqlvalid;
     }
     
     

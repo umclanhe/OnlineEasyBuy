@@ -12,10 +12,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="form.css" />
+        <script src="validation.js" ></script>
         <title>Order Information</title>
         <script>
             function addNew(){     
-            document.getElementById("newAddress").style.display = "block";   
+            document.getElementById("newAddress").style.display = "inline-block";   
 
             }
 
@@ -56,7 +59,7 @@
         
         
         <!--Add shipping information-->
-        <form action="/OnlineEasyBuy/ContinueOrderServlet" method="post">
+        <form action="/OnlineEasyBuy/ContinueOrderServlet" method="post" onsubmit="return checkShipping()">
             <!--show saved address and chose-->
             <table style="border-collapse: collapse" border="1"> 
             <tr><td colspan="7">Saved Address</td></tr>
@@ -82,30 +85,59 @@
             <%   
             }            
             %>       
-                <tr><td class="ctd1"><input type="radio" name="selectAdd" value="new" onclick="addNew()"> </td>
+                <tr><td class="ctd1"><input id="valid" type="radio" name="selectAdd" value="new" onclick="addNew()"> </td>
                     <td colspan="6">Add a new address</td></tr>
             </table> 
             
             <!--add a new address   -->
-            <table id="newAddress" style="border-collapse: collapse; display: none" border="1">
-                
-                <tr><td colspan="2">Shipping Address</td></tr>
-                <tr><td>Name</td><td><input type="text" name="aname"></td></tr>
-                <tr><td>Address(Street)</td><td><input type="text" name="street"></td></tr>
-                <tr><td>City</td><td><input type="text" name="city"></td></tr>
-                <tr><td>State</td><td><input type="text" name="state"></td></tr>
-                <tr><td>ZIP</td><td><input type="text" name="zip"></td></tr>
-                <tr><td>Phone</td><td><input type="text" name="phone"></td></tr>                
-                
-            </table>
+            <div id="newAddress" style="display: none" >
+                <div>
+                    <div class="formLable">Name:</div>
+                    <div class="formInput">
+                        <input id="aname" name="aname" type="text" onblur="checkName(this.id,'divright1')">
+                    </div>
+                    <div class="divright" id="divright1">Please enter a valid name.</div>
+                </div>
+                <div>     
+                    <div class="formLable">Address:</div>
+                    <div class="formInput">
+                        <input id="street" name="street" type="text" onblur="checkAdd(this.id,'divright2')">
+                    </div>
+                    <div class="divright" id="divright2">Please enter a valid Address.</div>
+                </div>
+                <div>
+                    <div class="formLable">City:</div>
+                    <div class="formInput">
+                        <input id="city" name="city" type="text" onblur="checkName(this.id,'divright3')">
+                    </div>
+                    <div class="divright" id="divright3">Please enter a valid email city.</div>
+                </div>
+                <div>
+                    <div class="formLable">State:</div>
+                    <div class="formInput">
+                        <input id="state" name="state" type="text" onblur="checkState(this.id,'divright4')">
+                    </div>
+                    <div class="divright" id="divright4">Please enter a valid email state.</div>
+                </div>
+                <div>
+                    <div class="formLable">ZIP:</div>
+                    <div class="formInput">
+                        <input id="zip" name="zip" type="text" onblur="checkZip(this.id,'divright5')">
+                    </div>
+                    <div class="divright" id="divright5">Please enter a valid email zip code.</div>
+                </div>
+                <div>
+                    <div class="formLable">Phone:</div>
+                    <div class="formInput">
+                        <input id="phone" name="phone" type="text" onblur="checkPhone(this.id,'divright6')">
+                    </div>
+                    <div class="divright" id="divright6">Please enter a valid phone number.</div>
+                </div>
+            </div>
             
-            <!--use this as billing address  
-            <table>
-            <tr><td><input type="checkbox" name="sameAdd" value="sameAdd"/></td>
-                <td>Use the Shipping Address as Billing Address</td></tr>
-            </table>
-            -->
-                <input type="submit"  value="Continue"/>  
+            <div class="button">
+                <button type="submit"  value="Continue" >Continue</button>
+            </div>
             
         </form>
                     

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : orderSubmit
-    Created on : 2016-4-19, 14:02:35
+    Document   : signupSuccessful
+    Created on : 2016-4-24, 13:03:29
     Author     : zjy
 --%>
 
@@ -10,9 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>Order Submit</title>
+        <title>Sign Up Successfully</title>
     </head>
     <body>
-        <h1>Thank you for your purchase!</h1>
+        <h1>Sign Up Successfully!</h1>
     </body>
 </html>

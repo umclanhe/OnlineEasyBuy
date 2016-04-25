@@ -68,13 +68,16 @@ public class SubmitServlet extends HttpServlet {
                 baddressId = saddressId;
             }
                                 
-            // pid, quantity
+            //pid, quantity
             MyCart myCart = (MyCart)request.getSession().getAttribute("myCart");
             //update order,transaction, product table
-            placeOrder.addOrder(loginCustomer, myCart, baddressId, baddressId);         
-            
-            request.getRequestDispatcher("orderSubmit.jsp").forward(request, response);
-                     
+            boolean addordervalid = false;
+            addordervalid = placeOrder.addOrder(loginCustomer, myCart, saddressId, baddressId);         
+            if(addordervalid){
+                request.getRequestDispatcher("orderSubmit.jsp").forward(request, response);
+            }else{
+                request.getRequestDispatcher("orderFailed.jsp").forward(request, response);
+            }         
         }
     }
 
