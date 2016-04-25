@@ -85,23 +85,46 @@
 <div class="banner-section">
     <div class="container">        
         <div class="col-md-3 banner-gridimg">
-            <h1>CellPhone</h1>
+            <div class="homecat">
+                <a href="CategoryServlet?file=cellphone">CellPhone</a>
+            </div>
         </div>   
         <div class="col-md-8 banner-gridimg">    <!--categoryBox  -->
-             <a href="CategoryServlet?file=laptop">               
-                <img src="images/ProductImages/cellphones.png"
+             <a href="CategoryServlet?file=cellphone">               
+                <img src="images/ProductImages/cellphones-m7.png"
                      alt="categoryname" class="categoryImage">
             </a>
         </div> 
         <div class="col-md-3 banner-gridimg">
+            <div class="homecat">
+                <a href="CategoryServlet?file=tablet">Tablet</a>
+            </div>        
+        </div>    
+        <div class="col-md-8 banner-gridimg">
             <a href="CategoryServlet?file=tablet">
-                <img src="images/ProductImages/appleipadair.jpg"
+                <img src="images/ProductImages/tablets.png"
                      alt="categoryname" class="categoryImage">
             </a>
+        </div>
+        <div class="col-md-3 banner-gridimg">
+            <div class="homecat">
+                <a href="CategoryServlet?file=laptop">Laptop</a>
+            </div>
+        </div>    
+        <div class="col-md-8 banner-gridimg">
+            <a href="CategoryServlet?file=laptop">
+                <img src="images/ProductImages/laptops.png"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div>
+        <div class="col-md-3 banner-gridimg">
+            <div class="homecat">
+                <a href="CategoryServlet?file=TV">TV</a>
+            </div>      
         </div>    
         <div class="col-md-8 banner-gridimg">
             <a href="CategoryServlet?file=TV">
-                <img src="images/ProductImages/samsungju6700.jpg"
+                <img src="images/ProductImages/TVs.png"
                      alt="categoryname" class="categoryImage">
             </a>
         </div>
