@@ -85,13 +85,41 @@
 <div class="banner-section">
     <div class="container">        
         <div class="col-md-3 banner-gridimg">
+            <h1>CellPhone</h1>
+        </div>   
+        <div class="col-md-8 banner-gridimg">    <!--categoryBox  -->
+             <a href="CategoryServlet?file=laptop">               
+                <img src="images/ProductImages/cellphones.png"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div> 
+        <div class="col-md-3 banner-gridimg">
+            <a href="CategoryServlet?file=tablet">
+                <img src="images/ProductImages/appleipadair.jpg"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div>    
+        <div class="col-md-8 banner-gridimg">
+            <a href="CategoryServlet?file=TV">
+                <img src="images/ProductImages/samsungju6700.jpg"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div>
+    </div>
+        <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div> 
+
+<!--<div class="banner-section">
+    <div class="container">        
+        <div class="col-md-3 banner-gridimg">
             <a href="CategoryServlet?file=cellphone">
-                <img src="images/ProductImages/samsunggalaxys6.jpg"
+                <img src="images/ProductImages/samsunggalaxys6.gif"
                      alt="categoryname" class="categoryImage">
             </a>
         </div>   
         <div class="col-md-8 banner-gridimg">    <!--categoryBox  -->
-            <a href="CategoryServlet?file=laptop">               
+        <!--     <a href="CategoryServlet?file=laptop">               
                 <img src="images/ProductImages/asuszenbook.jpg"
                      alt="categoryname" class="categoryImage">
             </a>
@@ -111,7 +139,8 @@
     </div>
         <div class="clearfix"></div>
 </div>
-<div class="clearfix"></div>
+<div class="clearfix"></div>  -->
+
 
 <!------------------ Above is the END of special page content ----------------->
 

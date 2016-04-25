@@ -14,15 +14,17 @@ function processAction(pid)
         if (xhr.readyState == 4) {            
             if (xhr.status == 200) {
                 var message = xhr.responseText;
-                var number = parseInt(message,10);
-                if(number == 0) {
-                    alert("The product is out of stock!");
-                }
-                else {
-                    alert("Product successfully added to shopping cart!");
-                     var node = document.getElementById("num");
-                     node.innerHTML=message;
-                }
+//               var number = parseInt(message,10);
+//                if(number == 0) {
+//                    alert("The product is out of stock!");
+//                }
+//                else if (number == -1) {
+//                    alert("Inventory shortage:");
+//                }
+                alert("Product successfully added to shopping cart!");
+                var node = document.getElementById("num");
+                node.innerHTML=message;
+              
             }else{
                 alert(xhr.status);
         }

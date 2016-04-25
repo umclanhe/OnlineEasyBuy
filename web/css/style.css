@@ -35,6 +35,7 @@ body{
 .header {
   padding: 1em 0 0;
   border-bottom: 3px solid#B6A7A7;
+  background-color: #fff;
 }
 .logo{
     float:left;
@@ -172,6 +173,96 @@ span.menu {
     height: 400px;   // 400 px   
     background: #03A9F4;
 }
+.outofstock {
+    color: #e42313;
+    font-weight:bold;
+}
+.shoppingcartshow {
+    text-align:center;
+    position:relative;
+    width:100%;
+    margin:0;
+    background-color:#D1DBBD;
+    color:#3E606F;
+}
+ table {
+    display: inline-block;
+    width:800px;
+    background-color:white;   
+    border-width: 5px;
+    border-radius: 10px;
+    text-align:center; 
+    border-collapse: collapse; 
+    border-bottom: 1px solid lightgray; 
+    padding: 5px;
+}
+ td {
+    border-bottom: 1px solid lightgray; 
+    padding: 5px;
+}
+.ctd1{
+    width:100px;
+}
+.ctd2{
+    width:200px;
+}
+.ctd3{
+    width:100px;
+}
+.ctd4{
+    width:200px;
+}
+.ctd5{
+    width:200px;
+}
+
+.ctd5 a, #dall a{
+    background-color: #D1DBBD; 
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.ctd4 a{
+    background-color: #D1DBBD; 
+    border: none;
+    color: white;
+    padding: 0px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.ctd5 a:hover, .ctd4 a:hover, #dall a:hover{
+    background-color: #3CB371; 
+}
+#scart, #cshop{
+    display: inline-block;
+    width:800px;
+    text-align:right;
+    padding: 10px;
+    font-size:20px;
+}
+#cshop{
+    text-align:center;
+}
+#scart a, #cshop a{
+    background-color:#c6ecd7;
+    color:#3E606F;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.disableadd {
+    pointer-events: none;
+    cursor: default;
+}
+
 .top-menu ul li {
   display: inline-block;
    margin: 0 1em;
@@ -186,10 +277,11 @@ span.menu {
 .top-menu ul li a:hover {
   color: #19CAE0; // #6bd04e
 }
-.top-menu ul li a.active {
+
+//.top-menu ul li a.active {
 //  color: #6bd04e;
-  color: #19CAE0;
-}
+//  color: #19CAE0;
+//}
 .top-menu {
   float: left;
 }

@@ -49,29 +49,41 @@ public class AddProduct extends HttpServlet {
         MyCart myCart;
         if(request.getSession().getAttribute("myCart")==null){            
             myCart = new MyCart();
-            request.getSession().setAttribute("myCart", myCart);
+            request.getSession(false).setAttribute("myCart", myCart);
         }else{
-            myCart=(MyCart)request.getSession().getAttribute("myCart");
+            myCart=(MyCart)request.getSession(false).getAttribute("myCart");
         }
-        ProductService newpservice = new ProductService();
-        int inventory = newpservice.getProduct(pid).getInventory();  
+/*      ProductService newpservice = new ProductService();
+        int inventory = newpservice.getProduct(pid).getInventory(); 
+        int quant = newpservice.getProduct(pid).getQuantity();
         System.out.println("number of the products: "+inventory);
-        String text;
+        String text="";
+        boolean addValid = true;
         if(inventory == 0) {
             System.out.println("The product is out of stock!!");
              text = inventory+"";
+             addValid = false;
         }
-        else {
+        if(myCart.hm.containsKey(pid) && (inventory == quant)) {       
+            System.out.println("Inventory shortage: please reduce the quantity of the product!!");
+            text=-1+"";
+            addValid = false;           
+        }
+        
+        if(addValid) {
             myCart.addProduct(pid);
             int num = myCart.getTotalNum();
             System.out.println(num);
             System.out.println(pid);
-            text = num+"";
-        }
-        response.getWriter().write(text); 
+            text = num+"";            
+        } */
+        myCart.addProduct(pid);
+        int num = myCart.getTotalNum();
+        System.out.println(num);
+        System.out.println(pid);
+        String text = num+"";  
         
-         
-                      
+        response.getWriter().write(text);                      
     }
 
     /**

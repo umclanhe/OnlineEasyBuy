@@ -6,7 +6,6 @@
 
 <%@page language="java" import="java.util.*, domain.*,service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE HTML>
-<!DOCTYPE html>
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -126,9 +125,19 @@
                         <td width="40%"><%=item.getFeature() %></td>
                         <td width="10%"><%=item.getPrice() %></td>
                         <td width="20%">
-                        <!--    <input type="button" name="submit" value="add to cart" id="submit" onclick = "processAction(<%=item.getPid() %>)"/>     -->    
+                        <%
+                            if(item.getInventory() == 0) {
+                        %>
+                           <span class="outofstock"> Out Of Stock</span>
+                        </td>
+                        <%
+                            } else {    
+                        %>        
                             <button type ="button" onclick="processAction(<%=item.getPid() %>)">Add</button>
                         </td>
+                        <%
+                            }
+                        %>
                     </tr>    
                     <%
                      } 
