@@ -27,6 +27,12 @@ public class LoginServlet extends HttpServlet {
             if(customerService.checkCustomer(loginCustomer)){
                 //login user session
                 request.getSession().setAttribute("loginCustomer", loginCustomer);
+                
+                String username;
+                loginCustomer=(Customer)request.getSession().getAttribute("loginCustomer");
+                username = customerService.findName(loginCustomer);     
+                request.getSession().setAttribute("loginUsername", username); //username session
+                
                 //shopping cart session
                 MyCart myCart;
                 if(request.getSession().getAttribute("myCart")==null){            

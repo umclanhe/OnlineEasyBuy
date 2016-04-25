@@ -20,6 +20,9 @@
         <link href='http://fonts.useso.com/css?family=Exo+2:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,300,200italic,200' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
     <!-- The End of loading css styles -->
+    <script>
+        
+    </script>
 </head>
 
 <body>
@@ -32,6 +35,7 @@
     }
     int totnum = newcart.getTotalNum();
     
+
  %>   
 <div class="header">
     <div class="container">
@@ -46,12 +50,24 @@
                 </ul>
             </div>
             <!-- nav-bar buttons-->
-            <div class="buttons">
-                <a href="SignIn.jsp" class="button1">Sign in</a>
-            </div>
-            <div class="buttons">
-                <a href="CreateAccount.jsp" class="button1">Create Account</a>
-            </div>
+            <%                
+                if((String)session.getAttribute("loginUsername") ==null){
+            %>    
+                <div class="buttons">
+                    <a href="login.jsp" class="button1">Login</a>
+                </div>
+                <div class="buttons">
+                    <a href="signup.jsp" class="button1">Create Account</a>
+                </div>
+            <% }else{
+                    %>               
+                <div class="buttons">                    
+                    <a class="button1" href="/OnlineEasyBuy/logoutServlet">Logout</a>                   
+                </div>
+                <div class="buttons">
+                    <%=(String)session.getAttribute("loginUsername") %>
+                </div>
+            <%}%>
             <div class="clearfix"></div>
         </div>
         <div class="header-bottom">
@@ -66,6 +82,7 @@
                     <input type="submit" value="">
 		</form>
             </div>
+            
             <!--shopping cart-->
             <div class="cart-wrap">
                 <a href="/OnlineEasyBuy/CartServlet?type=show" label="cart">
@@ -74,7 +91,15 @@
                     </div>
                     <span class="header-icon-cart" ><img src="images/carticon.jpg"></span>
                 </a>
-            </div>               
+            </div> 
+                                
+            <!--Username 
+            <div class="username">
+		<div>
+                   
+                </div>
+            </div>
+                -->
             <div class="clearfix"></div>
         </div>
     </div>
@@ -86,7 +111,9 @@
     <div class="container">        
         <div class="col-md-3 banner-gridimg">
             <div class="homecat">
+                <div class="clink">
                 <a href="CategoryServlet?file=cellphone">CellPhone</a>
+                </div>
             </div>
         </div>   
         <div class="col-md-8 banner-gridimg">    <!--categoryBox  -->
@@ -97,7 +124,9 @@
         </div> 
         <div class="col-md-3 banner-gridimg">
             <div class="homecat">
+                <div class="clink">
                 <a href="CategoryServlet?file=tablet">Tablet</a>
+                </div>
             </div>        
         </div>    
         <div class="col-md-8 banner-gridimg">
@@ -108,7 +137,9 @@
         </div>
         <div class="col-md-3 banner-gridimg">
             <div class="homecat">
+                <div class="clink">
                 <a href="CategoryServlet?file=laptop">Laptop</a>
+                </div>
             </div>
         </div>    
         <div class="col-md-8 banner-gridimg">
@@ -119,7 +150,9 @@
         </div>
         <div class="col-md-3 banner-gridimg">
             <div class="homecat">
+                <div class="clink">
                 <a href="CategoryServlet?file=TV">TV</a>
+                </div>
             </div>      
         </div>    
         <div class="col-md-8 banner-gridimg">
