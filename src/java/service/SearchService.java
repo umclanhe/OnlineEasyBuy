@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package service;
+
 import domain.*;
 import java.util.*;
 import utils.*;
@@ -15,17 +16,17 @@ import java.util.logging.Logger;
  *
  * @author Lan
  */
-public class CategoryService {
-    public CategoryService() {
+public class SearchService {
+    public SearchService() {
         
     }
-   public List<Product> getProductList(String cname) {      
-      List<Product> productList = new ArrayList<>();
-      Connection conn;
-      conn=DBUtil.getConnection();
-      String q1 = new String("SELECT * FROM PRODUCT WHERE UPPER(PCATEGORY) LIKE UPPER('%"+cname+"%')");
-//      Product item = new Product();    
-      try {
+    
+    public List<Product> searchProducts(String keyword) {
+        List<Product> productList = new ArrayList<>();
+        Connection conn;
+        conn=DBUtil.getConnection();
+        String q1 = new String("SELECT * FROM PRODUCT WHERE UPPER(DESCRIPTION) LIKE UPPER('%"+keyword+"%')");
+         try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(q1);
 
@@ -39,17 +40,13 @@ public class CategoryService {
                 item.setFeature(rs.getString(6));
                 item.setPicture(rs.getString(7));
                 productList.add(item);
-    //            System.out.println("pid = "+rs.getString(1));
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
         }
- /*     for(int i=0; i< productList.size(); i++) {
-          System.out.println("the product id is "+productList.get(i).getPid());
-      }*/
-      
-      return productList;
-   }
+         return productList;
+    }
+    
     
 }

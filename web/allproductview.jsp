@@ -1,31 +1,40 @@
+<%-- 
+    Document   : allproductview
+    Created on : Apr 24, 2016, 2:12:50 AM
+    Author     : Lan
+--%>
+
 <%@page language="java" import="java.util.*, domain.*,service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE HTML>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Shopping Cart</title>        
-        <!-- Load the css styles -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>search result view</title>
+   
+    <!-- Load the css styles -->
 	<!-- Bootstrap nav-bar frame-->
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
         <!-- Own css styles -->
-<!--        <link rel="stylesheet" type="text/css" href="css/orderstyle.css" />  -->  
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/swipebox.css" rel="stylesheet" />
-<!--        <link href="css/component.css" rel="stylesheet"/> -->
+        <link href="css/component.css" rel="stylesheet"/>
         <link href='http://fonts.useso.com/css?family=Exo+2:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,300,200italic,200' rel='stylesheet' type='text/css'/>
-        <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>   
-        <!-- The End of loading css styles -->    
+        <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+        <script type="text/javascript" src="js/json2.js"></script>
+        <script type="text/javascript" src="js/shoppingcart.js"></script>
+    <!-- The End of loading css styles -->
     </head>
     <body>
+               <!-- The navigation bar -->
 <%
     MyCart newcart = (MyCart)session.getAttribute("myCart");
     if(newcart == null) {
         newcart = new MyCart();
         session.setAttribute("myCart",newcart);
     }
-    int totnum = newcart.getTotalNum();    
-%>    
-        <!-- The navigation bar -->
+    int totnum = newcart.getTotalNum();
+    
+%>   
         <div class="header">
             <div class="container">
                 <div class="header-top">
@@ -61,7 +70,7 @@
                     </div>
             <!--shopping cart-->
                     <div class="cart-wrap">
-                        <a href="/OnlineEasyBuy/CartServlet?type=show" label="cart">
+                        <a href="CartServlet?type=show" label="cart">
                             <div class="count-container" aria-hiddern="true">
                                 <span class="header-icon-solid-circle"></span>   
                                 <span class="count" id="num"><%=totnum %></span>
@@ -74,49 +83,47 @@
             </div>
         </div>
 <!-- The end of loading navigation bar -->
-    <div class="shoppingcartshow">
-    <h1>My Shopping Cart</h1>   
-    <br>
-        <table border="1" style="border-collapse: collapse; width:600px;">
+
+<!-----------------below this line is the special page content----------------->
+<%
+    ArrayList<Product> productList = (ArrayList) request.getAttribute("productlist"); 
+%>  
+<div class="component">
+    <table>  
             <tr>
-                <td class="ctd1" >Product id</td><td class="ctd2">Product Name</td><td class="ctd3">Price</td><td class="ctd4">Quantity</td><td class="ctd5">Remove</td>
+                <th>Product Image</th>
+                <th>Feature</th>
+                <th>Price</th>
+                <th>Add to cart</th>
             </tr>
-            <%
-            //get product info form request
-                ArrayList al=(ArrayList)request.getAttribute("ProductList");
-                for(int i=0;i<al.size();i++){
-                    Product item = (Product)al.get(i);
-                %>
+                    <%
+                     for(int i=0; i < productList.size();i++) {
+                         Product item =(Product)productList.get(i);
+                     %>    
                     <tr>
-                        <td class="ctd1"><%=item.getPid() %></td>
-                        <td class="ctd2"><%=item.getPname() %></td>
-                        <td class="ctd3"><%=item.getPrice() %></td>
-                        <td class="ctd4"><a href="CartServlet?type=delone&pid=<%=item.getPid()%>">-</a>
-                            <%=item.getQuantity()%>
-                            <%
-                                if(item.getInventory() == item.getQuantity()) {
-                            %>   
-                            <a class="disableadd" href="CartServlet?type=addone&pid=<%=item.getPid()%>">+</a> </td>
-                            <%   
-                                }else {
-                            %>
-                            <a href="CartServlet?type=addone&pid=<%=item.getPid()%>">+</a> </td> 
-                            <%
-                                }
-                            %>
-                        <td class="ctd5"><a href="CartServlet?type=delete&pid=<%=item.getPid()%>">Remove</a></td>
-                    </tr>                   
-                <%   
-                }            
-            %>            
-            <tr>
-                <td id="dall" colspan="5"><a href="/OnlineEasyBuy/CartServlet?type=deleteall">Remove All</a></td>
-            </tr>
-            <tr>
-                <td id="totalprice" colspan="5">Total price: ${TotalPrice} </td>
-            </tr>
-        </table>            
-            <div id="cshop"><a href="/OnlineEasyBuy/OrderServlet">Place Order</a></div>    
-     </div>       
+                        <td width="30%"><img src="images/ProductImages/<%=item.getPicture() %>" alt="imageofproduct" height="170"></td>
+                        <td width="40%"><%=item.getFeature() %></td>
+                        <td width="10%"><%=item.getPrice() %></td>
+                        <td width="20%">
+                         <%
+                            if(item.getInventory() == 0) {
+                        %>
+                           <span class="outofstock"> Out Of Stock</span>
+                        </td>
+                        <%
+                            } else {    
+                        %>        
+                            <button type ="button" onclick="processAction(<%=item.getPid() %>)">Add</button>
+                        </td>
+                        <%
+                            }
+                        %>                           
+                    </tr>    
+                    <%
+                     } 
+                   %>
+    </table> 
+</div>
+<div class="clearfix"></div>
     </body>
 </html>

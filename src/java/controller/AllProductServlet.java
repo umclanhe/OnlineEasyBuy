@@ -8,20 +8,22 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import domain.*;
+import java.util.ArrayList;
 import java.util.List;
-import service.CategoryService;
+import service.ProductService;
+
 /**
  *
  * @author Lan
  */
-// call catergoryservice.java to do queries,
-//and then pass the modified session bean of catergory to catergoryview.jsp
-public class CategoryServlet extends HttpServlet {
+@WebServlet(name = "AllProductServlet", urlPatterns = {"/AllProductServlet"})
+public class AllProductServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,23 +35,11 @@ public class CategoryServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // get the catergory name from home.jsp
-        String categoryName =request.getParameter("file");
-        HttpSession session = request.getSession(true);
-        Category category =(Category) session.getAttribute("category");
-        if(category == null)
-        {
-            category = new Category();
-            session.setAttribute("category",category);
-        }       
-        category.setCategoryname(categoryName);  
-        CategoryService newCatService = new CategoryService();
-        
-        category.setCproducts(newCatService.getProductList(categoryName));
-        List<Product> productList = category.getCproducts();
-    //    System.out.println("This category contains: "+productList.size()+" products");
-        request.getRequestDispatcher("categoryview.jsp").forward(request, response);            
-     
+        List<Product> productList = new ArrayList<>();
+        ProductService newproductservice = new ProductService();
+        productList = newproductservice.getAllProduct();
+        request.setAttribute("productlist",productList);
+        request.getRequestDispatcher("allproductview.jsp").forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,17 +11,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import domain.*;
+import java.util.ArrayList;
 import java.util.List;
-import service.CategoryService;
+import service.SearchService;
+
 /**
  *
  * @author Lan
  */
-// call catergoryservice.java to do queries,
-//and then pass the modified session bean of catergory to catergoryview.jsp
-public class CategoryServlet extends HttpServlet {
+public class SearchServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,23 +33,13 @@ public class CategoryServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // get the catergory name from home.jsp
-        String categoryName =request.getParameter("file");
-        HttpSession session = request.getSession(true);
-        Category category =(Category) session.getAttribute("category");
-        if(category == null)
-        {
-            category = new Category();
-            session.setAttribute("category",category);
-        }       
-        category.setCategoryname(categoryName);  
-        CategoryService newCatService = new CategoryService();
-        
-        category.setCproducts(newCatService.getProductList(categoryName));
-        List<Product> productList = category.getCproducts();
-    //    System.out.println("This category contains: "+productList.size()+" products");
-        request.getRequestDispatcher("categoryview.jsp").forward(request, response);            
-     
+        String sproductname = request.getParameter("searchproduct"); 
+        List<Product> productList = new ArrayList<>();
+        SearchService newsearchservice = new SearchService();
+        productList = newsearchservice.searchProducts(sproductname);
+        request.setAttribute("productlist",productList);
+        request.setAttribute("searchkey",sproductname);
+        request.getRequestDispatcher("searchresultview.jsp").forward(request, response);   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
