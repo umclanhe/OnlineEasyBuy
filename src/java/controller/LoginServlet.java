@@ -29,14 +29,14 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("loginCustomer", loginCustomer);
                 //shopping cart session
                 MyCart myCart;
-                if(request.getSession().getAttribute("myCart")==null){            
+                if(request.getSession(false).getAttribute("myCart")==null){            
                     myCart = new MyCart();
-                    request.getSession().setAttribute("myCart", myCart);
+                    request.getSession(false).setAttribute("myCart", myCart);
                 }else{
-                    myCart=(MyCart)request.getSession().getAttribute("myCart");
+                    myCart=(MyCart)request.getSession(false).getAttribute("myCart");
                 }
                 
-                request.getRequestDispatcher("index.jsp").forward(request,response);
+                request.getRequestDispatcher("home.jsp").forward(request,response);
                 
             }else{
                 request.getRequestDispatcher("loginfailed.jsp").forward(request,response);

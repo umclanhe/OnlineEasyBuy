@@ -9,15 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="validation.js" ></script>
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="js/validation.js" ></script>
+        <link rel="stylesheet" type="text/css" href="css/orderstyle.css" />
         <link rel="stylesheet" type="text/css" href="form.css" />
         <title>Sign Up</title>
     </head>
     <body>
         <div class="register">
                 <h2>Sign Up</h2>     
-                <form id="form1" name="form1" method="post" action="/OnlineEasyBuy/SignupServlet"  onsubmit="return checkAll(this)">                    
+                <form id="form1" name="form1" method="post" action="SignupServlet"  onsubmit="return checkAll(this)">                    
                     <div>
                         <div class="formLable">
                             Email:*

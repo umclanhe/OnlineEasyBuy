@@ -47,10 +47,10 @@
             </div>
             <!-- nav-bar buttons-->
             <div class="buttons">
-                <a href="SignIn.jsp" class="button1">Sign in</a>
+                <a href="login.jsp" class="button1">Sign in</a>
             </div>
             <div class="buttons">
-                <a href="CreateAccount.jsp" class="button1">Create Account</a>
+                <a href="signup.jsp" class="button1">Create Account</a>
             </div>
             <div class="clearfix"></div>
         </div>

@@ -3,12 +3,12 @@ function processAction(pid)
    
     var xhr = createXHR();
     xhr.onreadystatechange = processResponse;    
-    // prepare the data for the server â€simplistic GET  
+    // prepare the data for the server ï¿½simplistic GET  
     //var url = "AddProduct.java?pid="+pid;     
     xhr.open("GET", "AddProduct?pid="+pid+"&"+ new Date().getTime(), true); 
     //send the request
     xhr.send();
-    alert("AJAX is working!");
+//    alert("AJAX is working!");
     
     function processResponse() {
         if (xhr.readyState == 4) {            
