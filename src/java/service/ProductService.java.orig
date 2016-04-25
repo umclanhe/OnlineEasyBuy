@@ -53,12 +53,15 @@ public class ProductService {
                 item.setPrice(Double.parseDouble(rs.getString(4)));
                 item.setInventory(Integer.parseInt(rs.getString(5)));
                 item.setFeature(rs.getString(6));
-            product.setFeature(obj[5].toString());
-            product.setPicture(obj[6].toString());          
-            newAl.add(product);
-        }     
+                item.setPicture(rs.getString(7));
+                productList.add(item);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        return newAl;
+        return productList;   
     }
     
 }

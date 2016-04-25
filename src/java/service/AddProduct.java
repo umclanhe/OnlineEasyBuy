@@ -49,22 +49,41 @@ public class AddProduct extends HttpServlet {
         MyCart myCart;
         if(request.getSession().getAttribute("myCart")==null){            
             myCart = new MyCart();
-            request.getSession().setAttribute("myCart", myCart);
+            request.getSession(false).setAttribute("myCart", myCart);
         }else{
-            myCart=(MyCart)request.getSession().getAttribute("myCart");
+            myCart=(MyCart)request.getSession(false).getAttribute("myCart");
         }
-                                                
-        myCart.addProduct(pid);        
-        System.out.println(pid);
+/*      ProductService newpservice = new ProductService();
+        int inventory = newpservice.getProduct(pid).getInventory(); 
+        int quant = newpservice.getProduct(pid).getQuantity();
+        System.out.println("number of the products: "+inventory);
+        String text="";
+        boolean addValid = true;
+        if(inventory == 0) {
+            System.out.println("The product is out of stock!!");
+             text = inventory+"";
+             addValid = false;
+        }
+        if(myCart.hm.containsKey(pid) && (inventory == quant)) {       
+            System.out.println("Inventory shortage: please reduce the quantity of the product!!");
+            text=-1+"";
+            addValid = false;           
+        }
         
+        if(addValid) {
+            myCart.addProduct(pid);
+            int num = myCart.getTotalNum();
+            System.out.println(num);
+            System.out.println(pid);
+            text = num+"";            
+        } */
+        myCart.addProduct(pid);
         int num = myCart.getTotalNum();
         System.out.println(num);
+        System.out.println(pid);
+        String text = num+"";  
         
-        String text = num+"";
-        response.getWriter().write(text); 
-        
-         
-                      
+        response.getWriter().write(text);                      
     }
 
     /**

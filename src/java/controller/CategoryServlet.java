@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import domain.*;
+import java.util.List;
 import service.CategoryService;
 /**
  *
@@ -35,16 +36,18 @@ public class CategoryServlet extends HttpServlet {
         // get the catergory name from home.jsp
         String categoryName =request.getParameter("file");
         HttpSession session = request.getSession(true);
-        Category catgory =(Category) session.getAttribute("catgory");
-        if(catgory == null)
+        Category category =(Category) session.getAttribute("category");
+        if(category == null)
         {
-            catgory = new Category();
-            session.setAttribute("catgory",catgory);
+            category = new Category();
+            session.setAttribute("category",category);
         }       
-        catgory.setCategoryname(categoryName);  
+        category.setCategoryname(categoryName);  
         CategoryService newCatService = new CategoryService();
         
-        catgory.setCproducts(newCatService.getProductList(categoryName));
+        category.setCproducts(newCatService.getProductList(categoryName));
+        List<Product> productList = category.getCproducts();
+    //    System.out.println("This category contains: "+productList.size()+" products");
         request.getRequestDispatcher("categoryview.jsp").forward(request, response);            
      
     }

@@ -24,12 +24,13 @@ public class CategoryService {
       Connection conn;
       conn=DBUtil.getConnection();
       String q1 = new String("SELECT * FROM PRODUCT WHERE UPPER(PCATEGORY) LIKE UPPER('%"+cname+"%')");
-      Product item = new Product();    
+//      Product item = new Product();    
       try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(q1);
 
             while(rs.next()){
+                Product item = new Product(); 
                 item.setPid(Integer.parseInt(rs.getString(1)));
                 item.setPname(rs.getString(2));
                 item.setCategory(rs.getString(3));
@@ -38,11 +39,15 @@ public class CategoryService {
                 item.setFeature(rs.getString(6));
                 item.setPicture(rs.getString(7));
                 productList.add(item);
+    //            System.out.println("pid = "+rs.getString(1));
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
         }
+ /*     for(int i=0; i< productList.size(); i++) {
+          System.out.println("the product id is "+productList.get(i).getPid());
+      }*/
       
       return productList;
    }

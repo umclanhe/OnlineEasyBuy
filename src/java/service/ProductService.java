@@ -4,6 +4,7 @@ import utils.DBUtil;
 import domain.Product;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.SqlHelper;
@@ -34,27 +35,33 @@ public class ProductService {
         return item;
     }
     
-    public ArrayList getAllProduct(){
+    public List<Product> getAllProduct(){
         
-        String sql = "select * from book where l=?";
-        String paras[]={"1"};
-        ArrayList al = new SqlHelper().executeQuery(sql,paras);
-        ArrayList<Product> newAl = new ArrayList<Product>();
+        String sql = "select * from PRODUCT";
+        Connection conn;
+        conn=DBUtil.getConnection();
+        List<Product> productList = new ArrayList<>();       
+        try {
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+
+            while(rs.next()){
+                Product item = new Product(); 
+                item.setPid(Integer.parseInt(rs.getString(1)));
+                item.setPname(rs.getString(2));
+                item.setCategory(rs.getString(3));
+                item.setPrice(Double.parseDouble(rs.getString(4)));
+                item.setInventory(Integer.parseInt(rs.getString(5)));
+                item.setFeature(rs.getString(6));
+                item.setPicture(rs.getString(7));
+                productList.add(item);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        for(int i=0; i<al.size();i++){
-            Object obj[] = (Object[])al.get(i);
-            Product product = new Product();
-            product.setPid(Integer.parseInt(obj[0].toString()));
-            product.setPname(obj[1].toString());
-            product.setCategory(obj[2].toString());
-            product.setPrice(Double.parseDouble(obj[3].toString()));
-            product.setInventory(Integer.parseInt(obj[4].toString()));
-            product.setFeature(obj[5].toString());
-            product.setPicture(obj[6].toString());          
-            newAl.add(product);
-        }     
-        
-        return newAl;
+        return productList;   
     }
     
 }

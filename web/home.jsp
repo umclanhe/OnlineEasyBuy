@@ -4,7 +4,7 @@
     Author     : Lan
 --%>
 
-<%@ page language="java" import="java.sql.*" %>
+<%@page language="java" import="java.util.*, domain.*,service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE HTML>
 <html>
 <head>
@@ -24,6 +24,15 @@
 
 <body>
 <!-- The navigation bar -->
+<%
+    MyCart newcart = (MyCart)session.getAttribute("myCart");
+    if(newcart == null) {
+        newcart = new MyCart();
+        session.setAttribute("myCart",newcart);
+    }
+    int totnum = newcart.getTotalNum();
+    
+ %>   
 <div class="header">
     <div class="container">
         <div class="header-top">
@@ -32,7 +41,7 @@
                 <ul>
                     <li><a href="home.jsp" class="active">Home</a></li>
                     <!--<li><a href="Profiles.html">Profiles</a></li>-->
-                    <li><a href="products.jsp">Products</a></li>
+                    <li><a href="AllProductServlet">Products</a></li>
                     <li><a href="about.jsp">About Us</a></li>
                 </ul>
             </div>
@@ -52,17 +61,16 @@
             </div>
             <!-- search box -->
             <div class="search">
-		<form action="search.jsp" method="post">
+		<form action="SearchServlet" method="post">
 		    <input type="text" name="searchproduct" value="" placeholder="search...">
                     <input type="submit" value="">
 		</form>
             </div>
             <!--shopping cart-->
             <div class="cart-wrap">
-                <a href="shoppingcart.jsp" label="cart">
-                    <div class="count-container" aria-hiddern="true">
-                        <span class="header-icon-solid-circle"></span>   
-                        <span class="count">${TotalNum}</span>
+                <a href="/OnlineEasyBuy/CartServlet?type=show" label="cart">
+                    <div class="count-container" aria-hiddern="true">                        
+                        <span id="num"><%=totnum %></span>
                     </div>
                     <span class="header-icon-cart" ><img src="images/carticon.jpg"></span>
                 </a>
@@ -77,43 +85,62 @@
 <div class="banner-section">
     <div class="container">        
         <div class="col-md-3 banner-gridimg">
-            <a href="CatergoryServlet?file=cellphone">
-                <span class="categoryLabel" style="opacity: 0.7"></span>
-                <span class="categoryLabelText">CellPhone</span>
-                <img src="images/ProductImages/samsunggalaxys6.jpg"
-                     alt="catergoryname" class="categoryImage">
-            </a>
+            <h1>CellPhone</h1>
         </div>   
         <div class="col-md-8 banner-gridimg">    <!--categoryBox  -->
-            <a href="CatergoryServlet?file=laptop">
-                <span class="categoryLabel" style="opacity: 0.7"></span>
-                <span class="categoryLabelText">Laptop</span>
-
-                <img src="images/ProductImages/asuszenbook.jpg"
-                     alt="catergoryname" class="categoryImage">
+             <a href="CategoryServlet?file=laptop">               
+                <img src="images/ProductImages/cellphones.png"
+                     alt="categoryname" class="categoryImage">
             </a>
         </div> 
         <div class="col-md-3 banner-gridimg">
-            <a href="CatergoryServlet?file=tablet">
-                <span class="categoryLabel" style="opacity: 0.7"></span>
-                <span class="categoryLabelText">Tablet</span>
+            <a href="CategoryServlet?file=tablet">
                 <img src="images/ProductImages/appleipadair.jpg"
-                     alt="catergoryname" class="categoryImage">
+                     alt="categoryname" class="categoryImage">
             </a>
         </div>    
         <div class="col-md-8 banner-gridimg">
-            <a href="CatergoryServlet?file=TV">
-                <span class="categoryLabel" style="opacity: 0.7"></span>
-                <span class="categoryLabelText">TV</span>
-
+            <a href="CategoryServlet?file=TV">
                 <img src="images/ProductImages/samsungju6700.jpg"
-                     alt="catergoryname" class="categoryImage">
+                     alt="categoryname" class="categoryImage">
             </a>
         </div>
     </div>
         <div class="clearfix"></div>
 </div>
-<div class="clearfix"></div>
+<div class="clearfix"></div> 
+
+<!--<div class="banner-section">
+    <div class="container">        
+        <div class="col-md-3 banner-gridimg">
+            <a href="CategoryServlet?file=cellphone">
+                <img src="images/ProductImages/samsunggalaxys6.gif"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div>   
+        <div class="col-md-8 banner-gridimg">    <!--categoryBox  -->
+        <!--     <a href="CategoryServlet?file=laptop">               
+                <img src="images/ProductImages/asuszenbook.jpg"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div> 
+        <div class="col-md-3 banner-gridimg">
+            <a href="CategoryServlet?file=tablet">
+                <img src="images/ProductImages/appleipadair.jpg"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div>    
+        <div class="col-md-8 banner-gridimg">
+            <a href="CategoryServlet?file=TV">
+                <img src="images/ProductImages/samsungju6700.jpg"
+                     alt="categoryname" class="categoryImage">
+            </a>
+        </div>
+    </div>
+        <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>  -->
+
 
 <!------------------ Above is the END of special page content ----------------->
 
