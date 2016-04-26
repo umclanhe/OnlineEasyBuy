@@ -6,7 +6,7 @@
         <title>Login</title>
         <script src="validation.js" ></script>
         <link rel="stylesheet" type="text/css" href="css/orderstyle.css" />
-        <link rel="stylesheet" type="text/css" href="form.css" />
+        <link rel="stylesheet" type="text/css" href="css/form.css" />
     </head>
     <body>
         <div class="login">  

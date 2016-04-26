@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/orderstyle.css" />
         <title>Sign Up Failed</title>
     </head>
     <body>
-        <h1>Sign Up Failed!</h1>
+        <h1>Sign Up Failed: please try another email! </h1>
     </body>
 </html>

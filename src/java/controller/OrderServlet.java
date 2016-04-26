@@ -43,7 +43,7 @@ public class OrderServlet extends HttpServlet {
         PrintWriter out = response.getWriter();       
         //check if customer login or not
         Customer loginCustomer;        
-        if(request.getSession().getAttribute("loginCustomer")==null){          
+        if(request.getSession().getAttribute("loginCustomer")==null){             
             request.getRequestDispatcher("login.jsp").forward(request, response);//go to login  
         }else{
             loginCustomer=(Customer)request.getSession().getAttribute("loginCustomer");

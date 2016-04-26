@@ -6,7 +6,6 @@ public class Customer {
     private String email;
     private String psw;
     
-    
     public Customer(String email, String psw){
         super();
         this.email=email;
@@ -17,7 +16,7 @@ public class Customer {
         super();
         this.email = email;
         this.psw = psw;
-        this.name = name;
+        this.name = name;       
     }
     
     public int getCid() {
@@ -51,7 +50,5 @@ public class Customer {
     public void setPsw(String psw) {
         this.psw = psw;
     }
-    
-
     
 }
