@@ -133,6 +133,19 @@ function checkAll3(){
 }
 
 function checkShipping(){
+    
+    var value =document.getElementById("valid").checked;        
+    if(!value){
+        return true;
+    }else if(checkName('aname','divright1')&&checkAdd('street','divright2')
+        &&checkName('city','divright3')&&checkState('state','divright4')
+        &&checkZip('zip','divright5')&&checkPhone('phone','divright6')){
+        return true;
+    }else return false
+   
+}
+
+function checkBilling(){
     var value =document.getElementById("valid").checked;
     if(checkCard('cardNumber','divright11')&&checkSecurity('securityCode','divright1')
             &&checkMonth('month','divright13')&&checkYear('year','divright14')){    
@@ -164,7 +177,7 @@ function checkCard(str1,str2){
 
 function checkSecurity(str1,str2){ 
     var value = document.getElementById(str1).value;        
-    if(value.length!==3 ||value.length!==4 ||!isNumber(value)){
+    if(value.length<3 ||value.length>4 ||!isNumber(value)){
        document.getElementById(str2).style.display = "block";
        return false;
     }else{
