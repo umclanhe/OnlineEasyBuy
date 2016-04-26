@@ -165,13 +165,13 @@
             <%   
             }            
             %>       
-                <tr><td class="ctd1"><input id="valid" type="radio" name="selectAdd" value="new" onclick="addNew()"> </td>
+                <tr><td class="ctd1"><input id="valid" type="radio" name="selectAdd" value="new" checked onclick="addNew()"> </td>
                     <td colspan="6">Add a new address</td></tr>
             </table> 
         </div>        
                          
             <!--add a new address   -->
-            <div id="newAddress" style="display: none" >
+            <div id="newAddress" style="display: inline-block" >
                 <div>
                     <div class="formLable">Name:</div>
                     <div class="formInput">

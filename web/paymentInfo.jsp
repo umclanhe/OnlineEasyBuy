@@ -103,7 +103,7 @@
     <div class="shoppingcartshow">
         <h1>Payment Infomation</h1>
         <br>
-        <form action="/OnlineEasyBuy/ReviewServlet" method="post" onsubmit="return checkShipping()">
+        <form action="/OnlineEasyBuy/ReviewServlet" method="post" onsubmit="return checkBilling()">
          <div class="shoppingcartshow">
             <table style="border-collapse: collapse" border="1">
                 <tr><td>Credit Card Number</td><td><input type="text" id="cardNumber" name="cardNumber" onblur="checkCard(this.id,'divright11')"></td>
@@ -126,13 +126,13 @@
                 <tr><td colspan="2">Billing Address</td></tr>
                 <tr><td><input type="radio" name="selectBillAdd" value="sameAdd" onclick="useSaved()"/></td>
                     <td>Use the Shipping Address as Billing Address</td></tr>
-                <tr><td><input id="valid" type="radio" name="selectBillAdd" value="new" onclick="addNew()"></td>
+                <tr><td><input id="valid" type="radio" name="selectBillAdd" value="new" checked onclick="addNew()"></td>
                     <td>Add a new address</td></tr>
             </table>
         </div>    
 
                     <!--add a new address   -->
-            <div id="newAddress" style="display: none" >
+            <div id="newAddress" style="display: inline-block" >
                 <div>
                     <div class="formLable">Name:</div>
                     <div class="formInput">
