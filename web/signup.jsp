@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/validation.js" ></script>
         <link rel="stylesheet" type="text/css" href="css/orderstyle.css" />
-        <link rel="stylesheet" type="text/css" href="form.css" />
+        <link rel="stylesheet" type="text/css" href="css/form.css" />
         <title>Sign Up</title>
     </head>
     <body>

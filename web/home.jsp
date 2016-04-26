@@ -45,8 +45,7 @@
                 <ul>
                     <li><a href="home.jsp" class="active">Home</a></li>
                     <!--<li><a href="Profiles.html">Profiles</a></li>-->
-                    <li><a href="AllProductServlet">Products</a></li>
-                    <li><a href="about.jsp">About Us</a></li>
+                    <li><a href="AllProductServlet">Products</a></li>                  
                 </ul>
             </div>
             <!-- nav-bar buttons-->
@@ -216,8 +215,6 @@
 	<div class="col-md-3 Resources1">
             <h3>resources</h3>
             <ul>
-                <li><a href="http://www.eatright.org/">ADA Association Website</a></li>
-                <li><a href="https://www.nutritioncare.org/Dietetics/">ASPEN Association Websit</a>e</li>
                 <li><a href="http://www.pitt.edu/">University of Pittsburgh</a></li>
                 <li><a href="http://www.sis.pitt.edu/spring/">Professor Spring Website</a></li>
             </ul>

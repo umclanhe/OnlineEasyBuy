@@ -49,17 +49,28 @@
                 <ul>
                     <li><a href="home.jsp" class="active">Home</a></li>
                     <!--<li><a href="Profiles.html">Profiles</a></li>-->
-                    <li><a href="AllProductServlet">Products</a></li>
-                    <li><a href="about.jsp">About Us</a></li>
+                    <li><a href="AllProductServlet">Products</a></li>           
                 </ul>
             </div>
             <!-- nav-bar buttons-->
-            <div class="buttons">
-                <a href="login.jsp" class="button1">Sign in</a>
-            </div>
-            <div class="buttons">
-                <a href="signup.jsp" class="button1">Create Account</a>
-            </div>
+             <%                
+                if((String)session.getAttribute("loginUsername") ==null){
+            %>    
+                <div class="buttons">
+                    <a href="login.jsp" class="button1">Login</a>
+                </div>
+                <div class="buttons">
+                    <a href="signup.jsp" class="button1">Create Account</a>
+                </div>
+            <% }else{
+                    %>               
+                <div class="buttons">                    
+                    <a class="button1" href="/OnlineEasyBuy/logoutServlet">Logout</a>                   
+                </div>
+                <div class="buttons">
+                    <%=(String)session.getAttribute("loginUsername") %>
+                </div>
+            <%}%>
             <div class="clearfix"></div>
         </div>
         <div class="header-bottom">

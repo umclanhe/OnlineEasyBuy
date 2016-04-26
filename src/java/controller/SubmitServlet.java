@@ -74,6 +74,7 @@ public class SubmitServlet extends HttpServlet {
             boolean addordervalid = false;
             addordervalid = placeOrder.addOrder(loginCustomer, myCart, saddressId, baddressId);         
             if(addordervalid){
+                myCart.deleteAll();
                 request.getRequestDispatcher("orderSubmit.jsp").forward(request, response);
             }else{
                 request.getRequestDispatcher("orderFailed.jsp").forward(request, response);

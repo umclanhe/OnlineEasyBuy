@@ -164,7 +164,7 @@ function checkCard(str1,str2){
 
 function checkSecurity(str1,str2){ 
     var value = document.getElementById(str1).value;        
-    if(value.length!==3 ||!isNumber(value)){
+    if(value.length!==3 ||value.length!==4 ||!isNumber(value)){
        document.getElementById(str2).style.display = "block";
        return false;
     }else{

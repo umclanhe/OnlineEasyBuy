@@ -1,0 +1,55 @@
+.divright {
+    color:red;
+    display:none;
+}
+
+.register, .login{
+    text-align:center;
+}
+
+
+.formLable{
+    display:inline-block;
+    width: 145px;
+    margin:5px 0 5px 0;
+    text-align: left;
+}
+
+.formInput{
+    display:inline-block;
+    width: 145px;
+    margin:5px 0 5px 0;
+}
+
+.button{
+    margin-top:10px;   
+}
+
+
+
+button{
+    //background-color: darkorange;
+}
+
+
+//upload
+.upload{
+    text-align:left;
+}
+
+.formLable1{  
+    margin-top: 5px;
+    text-align: left; 
+}
+.formInput1{  
+    text-align: left; 
+   
+    padding:8px;
+    display:block;
+    border:none;
+    width:100%;  
+}
+
+div{
+    //border: 1px solid red;
+}

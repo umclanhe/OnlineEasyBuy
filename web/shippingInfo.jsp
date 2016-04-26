@@ -55,17 +55,28 @@
                 <ul>
                     <li><a href="home.jsp" class="active">Home</a></li>
                     <!--<li><a href="Profiles.html">Profiles</a></li>-->
-                    <li><a href="AllProductServlet">Products</a></li>
-                    <li><a href="about.jsp">About Us</a></li>
+                    <li><a href="AllProductServlet">Products</a></li>        
                 </ul>
             </div>
             <!-- nav-bar buttons-->
-            <div class="buttons">
-                <a href="login.jsp" class="button1">Sign in</a>
-            </div>
-            <div class="buttons">
-                <a href="signup.jsp" class="button1">Create Account</a>
-            </div>
+             <%                
+                if((String)session.getAttribute("loginUsername") ==null){
+            %>    
+                <div class="buttons">
+                    <a href="login.jsp" class="button1">Login</a>
+                </div>
+                <div class="buttons">
+                    <a href="signup.jsp" class="button1">Create Account</a>
+                </div>
+            <% }else{
+                    %>               
+                <div class="buttons">                    
+                    <a class="button1" href="/OnlineEasyBuy/logoutServlet">Logout</a>                   
+                </div>
+                <div class="buttons">
+                    <%=(String)session.getAttribute("loginUsername") %>
+                </div>
+            <%}%>
             <div class="clearfix"></div>
         </div>
         <div class="header-bottom">
@@ -180,21 +191,21 @@
                     <div class="formInput">
                         <input id="city" name="city" type="text" onblur="checkName(this.id,'divright3')">
                     </div>
-                    <div class="divright" id="divright3">Please enter a valid email city.</div>
+                    <div class="divright" id="divright3">Please enter a valid city.</div>
                 </div>
                 <div>
                     <div class="formLable">State:</div>
                     <div class="formInput">
                         <input id="state" name="state" type="text" onblur="checkState(this.id,'divright4')">
                     </div>
-                    <div class="divright" id="divright4">Please enter a valid email state.</div>
+                    <div class="divright" id="divright4">Please enter a valid state.</div>
                 </div>
                 <div>
                     <div class="formLable">ZIP:</div>
                     <div class="formInput">
                         <input id="zip" name="zip" type="text" onblur="checkZip(this.id,'divright5')">
                     </div>
-                    <div class="divright" id="divright5">Please enter a valid email zip code.</div>
+                    <div class="divright" id="divright5">Please enter a valid zip code.</div>
                 </div>
                 <div>
                     <div class="formLable">Phone:</div>
